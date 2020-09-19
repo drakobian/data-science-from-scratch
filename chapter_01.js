@@ -1,7 +1,16 @@
 const { users, friendship_pairs } = require('./data.json');
 
 // https://dev.to/devtronic/javascript-map-an-array-of-objects-to-a-dictionary-3f42
-const friendships = Object.assign({}, ...users.map((user) => ({[user.id]: []})));
+const mapArrayToDict = function(objs, key) {
+    /* tried to generalize this so you could have an 
+        object with any defaultVal you prefer, but ran into an issue where
+        passing in [] as the values made it use _the same array_ for every 
+        key -- adding to object[0] was also adding to object[1] lololol
+        may just go with this for now, unless I end up using this for other things
+    */
+    return Object.assign({}, ...objs.map((obj) => ({ [obj[key]]: [] })));
+}
+const friendships = mapArrayToDict(users, 'id');
 
 // make a map from user Id to friend Ids
 for (const friendship of friendship_pairs) {
