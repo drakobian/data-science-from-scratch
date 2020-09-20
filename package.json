@@ -1,0 +1,22 @@
+{
+  "name": "data-science-from-scratch",
+  "version": "1.0.0",
+  "description": "data science from scratch",
+  "main": "chapter_01.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drakobian/data-science-from-scratch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drakobian/data-science-from-scratch/issues"
+  },
+  "homepage": "https://github.com/drakobian/data-science-from-scratch#readme",
+  "devDependencies": {
+    "jest": "^26.4.2"
+  }
+}

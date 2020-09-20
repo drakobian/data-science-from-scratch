@@ -40,3 +40,7 @@ num_friends_by_id = users.map(user => [user.id, number_of_friends(user)])
 
 // sort this array by number of friends, largest to smallest
 num_friends_by_id.sort((list1, list2) => list2[1] - list1[1])
+
+module.exports = {
+    mapArrayToDict
+}
