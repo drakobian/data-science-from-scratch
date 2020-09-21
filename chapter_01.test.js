@@ -1,6 +1,4 @@
-const { mapArrayToDict } = require('./chapter_01')
-const { exportAllDeclaration } = require('@babel/types')
-const { enhanceUnexpectedTokenMessage } = require('@jest/transform/build/enhanceUnexpectedTokenMessage')
+const { mapArrayToDict, numberOfFriends } = require('./chapter_01')
 
 describe('chapter_01', () => {
     describe('mapArrayToDict', () => {
@@ -21,4 +19,15 @@ describe('chapter_01', () => {
         })
     })
 
+    describe('numberOfFriends', () => {
+        it('gets the length of the given user\'s friends array', () => {
+            const user = { id: 42 };
+            const friendshipsMap = {
+                27: [1,2,3],
+                42: [27, 28]
+            };
+
+            expect(numberOfFriends(user, friendshipsMap)).toBe(2);
+        })
+    })
 })
