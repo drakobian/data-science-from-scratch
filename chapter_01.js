@@ -20,7 +20,7 @@ for (const friendship of friendshipPairs) {
 
 /** How many friends does user have? */
 const numberOfFriends = function(user, friendshipsMap) {
-    userId = user.id
+    userId = user.id;
     friendIds = friendshipsMap[userId];
     return friendIds.length;
 }
@@ -36,12 +36,33 @@ const avgConnections = totalConnections / num_users;
 
 // make an array of arrays where the first item is
 // the userId and the second item is how many friends they have
-numberOfFriendsById = users.map(user => [user.id, numberOfFriends(user, friendships)])
+const numberOfFriendsById = users.map(user => [user.id, numberOfFriends(user, friendships)]);
 
 // sort this array by number of friends, largest to smallest
-numberOfFriendsById.sort((list1, list2) => list2[1] - list1[1])
+numberOfFriendsById.sort((list1, list2) => list2[1] - list1[1]);
+
+const friendsOfFriends = function(user, friendshipsMap) {
+    const userId = user.id;
+    const friendCounts = {};
+
+    for (const friendId of friendshipsMap[userId]) {
+        for (const friendOfFriendId of friendshipsMap[friendId]) {
+            if (friendOfFriendId !== userId && friendshipsMap[userId].indexOf(friendOfFriendId) === -1) {
+                if (friendCounts[friendOfFriendId]) {
+                    friendCounts[friendOfFriendId]++;
+                } else {
+                    friendCounts[friendOfFriendId] = 1;
+                }
+            }
+        }
+    }
+
+    return friendCounts;
+}
 
 module.exports = {
+    friendships,
+    friendsOfFriends,
     mapArrayToDict,
     numberOfFriends,
 }
