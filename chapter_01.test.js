@@ -36,4 +36,10 @@ describe('chapter_01', () => {
             expect(friendsOfFriends(users[3], friendships)).toEqual({ 0: 2, 5: 1 });
         });
     });
+
+    describe('dataScientistsWhoLike', () => {
+        it('finds the ids of all users who like [targetInterest]', () => {
+            expect(dataScientistsWhoLike('Java')).toEqual(expect.arrayContaining([0, 5, 9]));
+        });
+    });
 });
