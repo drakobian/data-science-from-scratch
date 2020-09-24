@@ -42,11 +42,7 @@ const friendsOfFriends = function(user, friendshipsMap) {
     for (const friendId of friendshipsMap[userId]) {
         for (const friendOfFriendId of friendshipsMap[friendId]) {
             if (friendOfFriendId !== userId && friendshipsMap[userId].indexOf(friendOfFriendId) === -1) {
-                if (friendCounts[friendOfFriendId]) {
-                    friendCounts[friendOfFriendId]++;
-                } else {
-                    friendCounts[friendOfFriendId] = 1;
-                }
+                friendCounts[friendOfFriendId] = (friendCounts[friendOfFriendId] || 0) + 1
             }
         }
     }
