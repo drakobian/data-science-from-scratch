@@ -1,4 +1,4 @@
-const { users, friendshipPairs } = require('./data.json');
+const { friendshipPairs, interests, users } = require('./data.json');
 
 // https://dev.to/devtronic/javascript-map-an-array-of-objects-to-a-dictionary-3f42
 const mapArrayToDict = function(objs, key, defaultVal = () => []) {
@@ -50,7 +50,20 @@ const friendsOfFriends = function(user, friendshipsMap) {
     return friendCounts;
 }
 
+const dataScientistsWhoLike = function(targetInterest) {
+    const likers = [];
+
+    for (const interestPair of interests) {
+        if (interestPair[1] === targetInterest) {
+            likers.push(interestPair[0])
+        }
+    }
+
+    return likers;
+}
+    
 module.exports = {
+    dataScientistsWhoLike,
     friendships,
     friendsOfFriends,
     mapArrayToDict,

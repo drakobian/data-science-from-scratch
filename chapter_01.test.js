@@ -1,4 +1,4 @@
-const { friendships, friendsOfFriends, mapArrayToDict, numberOfFriends } = require('./chapter_01');
+const { dataScientistsWhoLike, friendships, friendsOfFriends, mapArrayToDict, numberOfFriends } = require('./chapter_01');
 const { users } = require('./data.json');
 
 describe('chapter_01', () => {
