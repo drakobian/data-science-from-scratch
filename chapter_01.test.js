@@ -11,12 +11,17 @@ describe('chapter_01', () => {
         const commonKeys = Object.values(objects.map(obj => obj.commonKey));
 
         const mapped = mapArrayToDict(objects, 'commonKey');
+        const mappedTo0 = mapArrayToDict(objects, 'commonKey', () => 0);
         it('contains the correct key for every object in the array', () => {
             expect(Object.keys(mapped)).toEqual(expect.arrayContaining(commonKeys));
         });
 
         it('contains the correct value for every object in the array', () => {
-            expect(Object.values(mapped)).toEqual(expect.arrayContaining([]));
+            expect(Object.values(mapped)).toEqual(expect.arrayContaining([[]]));
+        });
+
+        it('uses the defaultValue function if provided', () => {
+            expect(Object.values(mappedTo0)).toEqual(expect.arrayContaining([0]));
         });
     });
 
