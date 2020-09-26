@@ -42,4 +42,10 @@ describe('chapter_01', () => {
             expect(dataScientistsWhoLike('Java')).toEqual(expect.arrayContaining([0, 5, 9]));
         });
     });
+
+    describe('mostCommonInterestsWith', () => {
+        it('finds which users have the most interests in common with the given user', () => {
+            expect(mostCommonInterestsWith(users[0])).toEqual({ 9: 3 });
+        });
+    });
 });
