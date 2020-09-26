@@ -1,4 +1,4 @@
-const { dataScientistsWhoLike, friendships, friendsOfFriends, mapArrayToDict, numberOfFriends } = require('./chapter_01');
+const { dataScientistsWhoLike, friendships, friendsOfFriends, interestsByUserId, mapArrayToDict, mostCommonInterestsWith, numberOfFriends, userIdsByInterest } = require('./chapter_01');
 const { users } = require('./data.json');
 
 describe('chapter_01', () => {
@@ -45,7 +45,7 @@ describe('chapter_01', () => {
 
     describe('mostCommonInterestsWith', () => {
         it('finds which users have the most interests in common with the given user', () => {
-            expect(mostCommonInterestsWith(users[0])).toEqual({ 9: 3 });
+            expect(mostCommonInterestsWith(users[0], userIdsByInterest, interestsByUserId)).toEqual({ 9: 3, 1: 2, 5: 1, 8: 1 });
         });
     });
 });

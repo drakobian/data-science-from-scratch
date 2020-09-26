@@ -60,12 +60,41 @@ const dataScientistsWhoLike = function(targetInterest) {
     }
 
     return likers;
+};
+
+userIdsByInterest = {};
+interestsByUserId = {};
+
+for (const interestPair of interests) {
+    userId = interestPair[0];
+    interest = interestPair[1];
+
+    userIdsByInterest[interest] = (userIdsByInterest[interest] && [...userIdsByInterest[interest], userId]) || [userId];
+    interestsByUserId[userId] = (interestsByUserId[userId] && [...interestsByUserId[userId], interest]) || [interest];
+}
+
+const mostCommonInterestsWith = function(user, usersByInterestMap, interestsByUserMap) {
+    const userId = user.id;
+    const interestCounts = {};
+
+    for (const interest of interestsByUserMap[userId]) {
+        for (const interestedUserId of usersByInterestMap[interest]) {
+            if (interestedUserId !== userId) {
+                interestCounts[interestedUserId] = (interestCounts[interestedUserId] || 0) + 1
+            }
+        }
+    }
+
+    return interestCounts;
 }
     
 module.exports = {
     dataScientistsWhoLike,
     friendships,
     friendsOfFriends,
+    interestsByUserId,
     mapArrayToDict,
+    mostCommonInterestsWith,
     numberOfFriends,
+    userIdsByInterest
 }
